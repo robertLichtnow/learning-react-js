@@ -23,7 +23,7 @@ class App extends Component {
 
   handleDelete = counterId => {
     const counters = this.state.counters.filter(
-      counter => counter.id != counterId
+      counter => counter.id !== counterId
     );
     this.setState({ counters });
   };
