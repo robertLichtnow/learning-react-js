@@ -13,6 +13,34 @@ class App extends Component {
     ]
   };
 
+  constructor(){
+    super();
+    console.log('App - Constructor');
+  }
+
+  componentDidMount(){
+    //ajax calls go here
+    console.log('App - Mounted')
+  }
+
+  render() {
+    console.log('App - Rendered')
+    
+    return (
+      <React.Fragment>
+        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
+        <main className="container">
+          <Counters
+            onReset={this.handleReset}
+            onIncrement={this.handleIncrement}
+            onDelete={this.handleDelete}
+            counters={this.state.counters}
+          />
+        </main>
+      </React.Fragment>
+    );
+  }
+
   handleReset = () => {
     const counters = this.state.counters.map(c => {
       c.value = 0;
@@ -35,22 +63,6 @@ class App extends Component {
     counters[index].value++;
     this.setState({ counters });
   };
-
-  render() {
-    return (
-      <React.Fragment>
-        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
-        <main className="container">
-          <Counters
-            onReset={this.handleReset}
-            onIncrement={this.handleIncrement}
-            onDelete={this.handleDelete}
-            counters={this.state.counters}
-          />
-        </main>
-      </React.Fragment>
-    );
-  }
 }
 
 export default App;
