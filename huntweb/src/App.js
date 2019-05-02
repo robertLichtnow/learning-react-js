@@ -1,9 +1,12 @@
 import React from 'react';
+import './styles.css'
 
-function App() {
+import Header  from './components/Header';
+
+const App = () => {
   return (
     <div className="App">
-      <h1>Hello Rocketseat</h1>
+      <Header/>
     </div>
   );
 }
